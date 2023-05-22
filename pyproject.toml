@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "llm-chess-imitation"
+version = "0.1.0"
+description = ""
+authors = ["David"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "llm_chess_imitation"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+chess = "^1.9.4"
+prettytable = "^3.7.0"
+# directory
+mingpt = { path = "./minGPT", develop = true }
+torch = "^2.0.1"
+torchvision = "^0.15.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

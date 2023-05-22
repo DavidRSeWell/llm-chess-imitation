@@ -62,7 +62,7 @@ def filter_data(args):
                 # Sanity check for filtered games
                 moves = game.strip().split()
                 board = chess.Board()
-                for move in moves:
+                for move in moves[2:-1]:
                     board.push(board.parse_uci(move))
                 writer.write(game)
             except ValueError:

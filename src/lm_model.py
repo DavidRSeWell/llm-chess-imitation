@@ -8,7 +8,7 @@ from os import path
 from argparse import ArgumentParser
 from collections import OrderedDict, defaultdict
 
-from pytorch_lightning.core.lightning import LightningModule
+from pytorch_lightning.core import LightningModule
 from transformers import GPT2Config, get_linear_schedule_with_warmup
 
 from model_utils.gpt2_model import GPT2LMHeadModel

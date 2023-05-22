@@ -6,7 +6,11 @@ import re
 from os import path
 from collections import Counter
 
-from constants import NOTATION_TO_REGEX, PIECE_TYPES
+try:
+    from constants import NOTATION_TO_REGEX, PIECE_TYPES
+except:
+    from ..constants import NOTATION_TO_REGEX, PIECE_TYPES
+
 
 logger = logging.getLogger()
 logging.basicConfig(level=logging.DEBUG,
@@ -23,7 +27,11 @@ def create_vocab(source_file, add_piece_type, notation="uci"):
     move_pattern = re.compile(NOTATION_TO_REGEX[notation])
     with open(source_file) as f:
         for line in f:
-            game = line.strip()
+            game = line.strip().split(" ")
+            header_parts = game[:2] + [game[-1]]
+            for part in header_parts:
+                vocab[part] += 1
+            game = " ".join(game[2:-1])
             move_parts = move_pattern.split(game)
             for part in move_parts:
                 part = part.strip()
